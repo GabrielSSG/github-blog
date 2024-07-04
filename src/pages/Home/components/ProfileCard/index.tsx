@@ -4,6 +4,7 @@ import {
   ProfileCardContent,
   ProfileCardFooter,
   ProfileCardHeader,
+  ProfilePicture,
 } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -17,11 +18,13 @@ import { GithubUser } from "@/@types/github-user";
 
 interface ProfileCardProps {
   user: GithubUser | null;
+  isLoading?: boolean;
 }
-export function ProfileCard({ user }: ProfileCardProps) {
+export function ProfileCard({ user, isLoading }: ProfileCardProps) {
   return (
     <ProfileCardContainer>
-      <img src={user?.avatar_url} alt="profile-picture" />
+      <ProfilePicture src={user?.avatar_url} alt="profile-picture" />
+
       <ProfileCardContent>
         <ProfileCardHeader>
           <h1>{user?.name}</h1>

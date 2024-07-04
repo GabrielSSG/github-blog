@@ -4,24 +4,20 @@ import { Publications } from "./components/Publications";
 import { HomePageContainer } from "./styles";
 import { GithubUser } from "@/@types/github-user";
 import { defaultGithubUser } from "@/data";
+import { gitHub } from "@/utils/http";
 
 export function HomePage() {
   const [githubUser, setGithubUser] = React.useState<GithubUser | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const getGithubUser = React.useCallback(() => {
+  React.useEffect(() => {
     setIsLoading(true);
-    fetch(`https://api.github.com/users/${defaultGithubUser.name}`)
-      .then((response) => response.json())
-      .then((data: GithubUser) => {
-        setGithubUser(data);
-        setIsLoading(false);
+    gitHub
+      .get(`users/${defaultGithubUser.name}`)
+      .then((response) => {
+        setGithubUser(response.data);
       })
       .finally(() => setIsLoading(false));
-  }, []);
-
-  React.useEffect(() => {
-    getGithubUser();
   }, []);
 
   return (

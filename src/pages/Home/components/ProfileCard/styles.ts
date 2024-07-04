@@ -8,12 +8,12 @@ export const ProfileCardContainer = styled(Card)`
   max-width: 1120px;
   margin: 4rem auto 0;
   gap: 2rem;
+`;
 
-  img {
-    width: 148px;
-    height: 148px;
-    border-radius: 8px;
-  }
+export const ProfilePicture = styled.img`
+  width: 148px;
+  height: 148px;
+  border-radius: 8px;
 `;
 
 export const ProfileCardHeader = styled.div`
