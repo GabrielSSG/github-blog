@@ -1,4 +1,5 @@
 import {
+  ProfileCardBio,
   ProfileCardContainer,
   ProfileCardContent,
   ProfileCardFooter,
@@ -12,42 +13,39 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@/styles/link";
+import { GithubUser } from "@/@types/github-user";
 
-export function ProfileCard() {
+interface ProfileCardProps {
+  user: GithubUser | null;
+}
+export function ProfileCard({ user }: ProfileCardProps) {
   return (
     <ProfileCardContainer>
-      <img
-        src="https://avatars.githubusercontent.com/u/89484314?v=4"
-        alt="profile-picture"
-      />
-      <div>
+      <img src={user?.avatar_url} alt="profile-picture" />
+      <ProfileCardContent>
         <ProfileCardHeader>
-          <h1>Cameron Williamson</h1>
-          <Link href="#">
+          <h1>{user?.name}</h1>
+          <Link href={user?.html_url}>
             Github <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </Link>
         </ProfileCardHeader>
-        <ProfileCardContent>
-          <p>
-            Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-            viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-            volutpat pulvinar vel mass.
-          </p>
-        </ProfileCardContent>
+        <ProfileCardBio>
+          <p>{user?.bio}</p>
+        </ProfileCardBio>
         <ProfileCardFooter>
           <span>
             <FontAwesomeIcon icon={faGithub} />
-            cameronwll
+            {user?.login}
           </span>
           <span>
-            <FontAwesomeIcon icon={faBuilding} /> Rocketseat
+            <FontAwesomeIcon icon={faBuilding} /> {user?.company}
           </span>
           <span>
             <FontAwesomeIcon icon={faUserGroup} />
-            32 seguidores
+            {user?.followers} seguidores
           </span>
         </ProfileCardFooter>
-      </div>
+      </ProfileCardContent>
     </ProfileCardContainer>
   );
 }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const ProfileCardContainer = styled(Card)`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   max-width: 1120px;
   margin: 4rem auto 0;
@@ -27,8 +27,7 @@ export const ProfileCardHeader = styled.div`
   }
 `;
 
-export const ProfileCardContent = styled.div`
-  margin-top: 1.5rem;
+export const ProfileCardBio = styled.div`
   p {
     font-size: 1rem;
     line-height: 160%;
@@ -39,5 +38,18 @@ export const ProfileCardContent = styled.div`
 export const ProfileCardFooter = styled(CardFooter)`
   span {
     color: ${({ theme }) => theme.colors.baseSubtitle};
+  }
+`;
+
+export const ProfileCardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+
+  span {
+    font-size: 0.875rem;
+    line-height: 160%;
+    color: ${({ theme }) => theme.colors.baseSpan};
   }
 `;
