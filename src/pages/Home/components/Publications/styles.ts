@@ -1,7 +1,9 @@
+import { Container } from "@/styles/container";
 import styled from "styled-components";
 
-export const PublicationsContainer = styled.div`
-  width: 100%;
-  max-width: 1120px;
-  margin: 4rem auto 0;
+export const PublicationListContainer = styled(Container)`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 5rem;
 `;

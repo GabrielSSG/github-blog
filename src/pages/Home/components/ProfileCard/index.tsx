@@ -4,10 +4,14 @@ import {
   ProfileCardFooter,
   ProfileCardHeader,
 } from "./styles";
-import { Link } from "../../../../components/Link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowUpRightFromSquare,
+  faBuilding,
+  faUserGroup,
+} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "@/styles/link";
 
 export function ProfileCard() {
   return (
@@ -19,7 +23,9 @@ export function ProfileCard() {
       <div>
         <ProfileCardHeader>
           <h1>Cameron Williamson</h1>
-          <Link href="#">Github</Link>
+          <Link href="#">
+            Github <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+          </Link>
         </ProfileCardHeader>
         <ProfileCardContent>
           <p>
