@@ -17,10 +17,10 @@ import { Link } from "@/styles/link";
 import { GithubUser } from "@/@types/github-user";
 
 interface ProfileCardProps {
-  user: GithubUser | null;
+  user: GithubUser | undefined;
   isLoading?: boolean;
 }
-export function ProfileCard({ user, isLoading }: ProfileCardProps) {
+export function ProfileCard({ user }: ProfileCardProps) {
   return (
     <ProfileCardContainer>
       <ProfilePicture src={user?.avatar_url} alt="profile-picture" />

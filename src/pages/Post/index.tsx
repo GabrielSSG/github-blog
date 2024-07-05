@@ -14,8 +14,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@/styles/link";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { useParams } from "react-router-dom";
+import { useGetPublication } from "@/hooks/use-get-publication";
+import { useEffect } from "react";
+import { defaultGithubUser } from "@/data";
 
 export function PostPage() {
+  const { id } = useParams();
+
+  const { getPublication } = useGetPublication();
+
+  useEffect(() => {
+    getPublication(defaultGithubUser.name, defaultGithubUser.repo, id!);
+  }, []);
+
   return (
     <PostPageContainer>
       <PostCard>

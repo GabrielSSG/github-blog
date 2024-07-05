@@ -1,4 +1,5 @@
 import { Card } from "@/styles/card";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const PublicationCardContainer = styled(Card)`
@@ -40,7 +41,7 @@ export const PublicationCardContent = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 
   p {
@@ -48,4 +49,8 @@ export const PublicationCardContent = styled.div`
     line-height: 160%;
     color: ${({ theme }) => theme.colors.baseText};
   }
+`;
+
+export const LinkStyled = styled(Link)`
+  text-decoration: none;
 `;

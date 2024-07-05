@@ -2,18 +2,31 @@ import { Container } from "@/styles/container";
 import { SearchPublications } from "./components/SearchPublications";
 import { PublicationListContainer } from "./styles";
 import { PublicationCard } from "./components/PublicationCard";
+import React from "react";
+import { useGetPublications } from "@/hooks/use-get-publications";
 
-export function Publications() {
+interface PublicationsProps {
+  userName: string;
+  repo: string;
+}
+export function Publications({ userName, repo }: PublicationsProps) {
+  const [queryString, setQueryString] = React.useState("");
+  const { publications, getPublications } = useGetPublications();
+
+  React.useEffect(() => {
+    getPublications(userName, repo, queryString);
+  }, [getPublications, queryString, repo, userName]);
+
   return (
     <Container>
-      <SearchPublications />
+      <SearchPublications
+        onValueChange={setQueryString}
+        publicationsLength={publications.length}
+      />
       <PublicationListContainer>
-        <PublicationCard />
-        <PublicationCard />
-        <PublicationCard />
-        <PublicationCard />
-        <PublicationCard />
-        <PublicationCard />
+        {publications.map((publication) => (
+          <PublicationCard key={publication.id} {...publication} />
+        ))}
       </PublicationListContainer>
     </Container>
   );
