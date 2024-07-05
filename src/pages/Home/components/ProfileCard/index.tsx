@@ -14,10 +14,10 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@/styles/link";
-import { GithubUser } from "@/@types/github-user";
+import { GitHubUser } from "@/@types/github-user";
 
 interface ProfileCardProps {
-  user: GithubUser | undefined;
+  user: GitHubUser | undefined;
   isLoading?: boolean;
 }
 export function ProfileCard({ user }: ProfileCardProps) {
