@@ -3,6 +3,7 @@ import {
   PostCardFooter,
   PostCardHeader,
   PostCardTitle,
+  PostContent,
   PostPageContainer,
 } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,11 +19,13 @@ import { useParams } from "react-router-dom";
 import { useGetPublication } from "@/hooks/use-get-publication";
 import { useEffect } from "react";
 import { defaultGithubUser } from "@/data";
+import { useGitHubUser } from "@/hooks/use-github-user";
+import Markdown from "react-markdown";
 
 export function PostPage() {
   const { id } = useParams();
-
-  const { getPublication } = useGetPublication();
+  const { getPublication, publication } = useGetPublication();
+  const { gitHubUser } = useGitHubUser();
 
   useEffect(() => {
     getPublication(defaultGithubUser.name, defaultGithubUser.repo, id!);
@@ -39,21 +42,24 @@ export function PostPage() {
             Ver no Github <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </Link>
         </PostCardHeader>
-        <PostCardTitle>JavaScript data types and data structures</PostCardTitle>
+        <PostCardTitle>{publication?.title}</PostCardTitle>
         <PostCardFooter>
           <span>
             <FontAwesomeIcon icon={faGithub} />
-            cameronwll
+            {gitHubUser?.login}
           </span>
           <span>
-            <FontAwesomeIcon icon={faBuilding} /> Rocketseat
+            <FontAwesomeIcon icon={faBuilding} /> {gitHubUser?.company}
           </span>
           <span>
             <FontAwesomeIcon icon={faUserGroup} />
-            32 seguidores
+            {gitHubUser?.followers} seguidores
           </span>
         </PostCardFooter>
       </PostCard>
+      <PostContent>
+        <Markdown>{publication?.body}</Markdown>
+      </PostContent>
     </PostPageContainer>
   );
 }

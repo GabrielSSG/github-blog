@@ -30,3 +30,7 @@ export const PostCardFooter = styled(CardFooter)`
     color: ${({ theme }) => theme.colors.baseSpan};
   }
 `;
+
+export const PostContent = styled(Container)`
+  padding: 2.5rem 2rem;
+`;

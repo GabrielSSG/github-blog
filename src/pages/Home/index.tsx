@@ -1,19 +1,16 @@
 import { ProfileCard } from "./components/ProfileCard";
 import { Publications } from "./components/Publications";
 import { HomePageContainer } from "./styles";
-import { defaultGithubUser } from "@/data";
-import { useGetGithubUser } from "@/hooks/use-get-github-user";
+
+import { useGitHubUser } from "@/hooks/use-github-user";
 
 export function HomePage() {
-  const { data, isLoading } = useGetGithubUser();
+  const { gitHubUser, isLoading } = useGitHubUser();
 
   return (
     <HomePageContainer>
-      <ProfileCard user={data} isLoading={isLoading} />
-      <Publications
-        userName={defaultGithubUser.name}
-        repo={defaultGithubUser.repo}
-      />
+      <ProfileCard user={gitHubUser} isLoading={isLoading} />
+      <Publications />
     </HomePageContainer>
   );
 }

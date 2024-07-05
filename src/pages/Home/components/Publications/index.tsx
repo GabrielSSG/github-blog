@@ -5,17 +5,13 @@ import { PublicationCard } from "./components/PublicationCard";
 import React from "react";
 import { useGetPublications } from "@/hooks/use-get-publications";
 
-interface PublicationsProps {
-  userName: string;
-  repo: string;
-}
-export function Publications({ userName, repo }: PublicationsProps) {
+export function Publications() {
   const [queryString, setQueryString] = React.useState("");
   const { publications, getPublications } = useGetPublications();
 
   React.useEffect(() => {
-    getPublications(userName, repo, queryString);
-  }, [getPublications, queryString, repo, userName]);
+    getPublications(queryString);
+  }, [getPublications, queryString]);
 
   return (
     <Container>
