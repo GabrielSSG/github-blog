@@ -43,7 +43,7 @@ Ensure you have the following installed:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/github-blog.git
+    git clone https://github.com/GabrielSSG/github-blog.git
     ```
 
 2. Install dependencies:
